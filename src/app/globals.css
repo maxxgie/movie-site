@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand-50: #fff1f2;
+  --color-brand-100: #ffe4e6;
+  --color-brand-200: #fecdd3;
+  --color-brand-300: #fda4af;
+  --color-brand-400: #fb7185;
+  --color-brand-500: #f43f5e;
+  --color-brand-600: #e11d48;
+  --color-brand-700: #be123c;
+  --color-brand-800: #9f1239;
+  --color-brand-900: #881337;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --shadow-card: 0 10px 30px -12px rgb(0 0 0 / 0.6);
+  --shadow-glow: 0 0 40px -10px rgb(244 63 94 / 0.45);
+}
+
+/*
+ * The neutral palette is driven by CSS variables so the same utility classes
+ * flip between the dark and light themes at runtime.
+ */
+@theme inline {
+  --color-ink-50: var(--ink-50);
+  --color-ink-100: var(--ink-100);
+  --color-ink-200: var(--ink-200);
+  --color-ink-300: var(--ink-300);
+  --color-ink-400: var(--ink-400);
+  --color-ink-500: var(--ink-500);
+  --color-ink-600: var(--ink-600);
+  --color-ink-700: var(--ink-700);
+  --color-ink-800: var(--ink-800);
+  --color-ink-900: var(--ink-900);
+  --color-ink-950: var(--ink-950);
+}
+
+:root {
+  --ink-50: #f6f6f7;
+  --ink-100: #e7e7ea;
+  --ink-200: #c9c9d0;
+  --ink-300: #a1a1ad;
+  --ink-400: #74747f;
+  --ink-500: #55555f;
+  --ink-600: #3d3d46;
+  --ink-700: #2a2a31;
+  --ink-800: #1b1b20;
+  --ink-900: #121216;
+  --ink-950: #0a0a0d;
+}
+
+:root.light {
+  --ink-50: #fafafa;
+  --ink-100: #1c1c21;
+  --ink-200: #2e2e36;
+  --ink-300: #45454f;
+  --ink-400: #63636e;
+  --ink-500: #86868f;
+  --ink-600: #b9b9c0;
+  --ink-700: #d6d6db;
+  --ink-800: #e8e8ec;
+  --ink-900: #f2f2f4;
+  --ink-950: #ffffff;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--ink-950);
+    color: var(--ink-100);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-600);
+    color: white;
+  }
+}
+
+.light [class*="border-white/"] {
+  border-color: rgb(0 0 0 / 0.08);
+}
+
+.light [class*="ring-white/"] {
+  --tw-ring-color: rgb(0 0 0 / 0.08);
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.4s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out both;
+}

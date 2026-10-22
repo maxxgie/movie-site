@@ -1,0 +1,14 @@
+services:
+  movie-site:
+    build: .
+    image: movie-site:latest
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      TMDB_API_KEY: ${TMDB_API_KEY:-}
+      TMDB_ACCESS_TOKEN: ${TMDB_ACCESS_TOKEN:-}
+      DATA_DIR: /app/data
+    volumes:
+      # keeps reviews + sources.json across rebuilds
+      - ./data:/app/data
